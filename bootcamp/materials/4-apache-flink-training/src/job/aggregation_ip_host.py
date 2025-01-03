@@ -33,15 +33,10 @@ def create_aggregated_events_sink_postgres(t_env):
     table_name = 'host_ip_aggregated'
     sink_ddl = f"""
         CREATE TABLE {table_name} (
-            ip VARCHAR,
             host VARCHAR,
-            url VARCHAR,
-            start_time TIMESTAMP(3),
-            end_time TIMESTAMP(3),
-            
-            
-            num_hits BIGINT,
-            WATERMARK FOR event_hour AS event_hour - INTERVAL '15' SECOND
+            avg_events_per_session DOUBLE,
+            total_sessions BIGINT,
+            total_events BIGINT
         ) WITH (
             'connector' = 'jdbc',
             'url' = '{os.environ.get("POSTGRES_URL")}',

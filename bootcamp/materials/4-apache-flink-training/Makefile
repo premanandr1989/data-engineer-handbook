@@ -52,7 +52,7 @@ aggregation_job:
 	docker compose exec jobmanager ./bin/flink run -py /opt/src/job/aggregation_job.py --pyFiles /opt/src -d
 
 aggregation_ip_host:
-	docker compose exec jobmanager ./bin/flink run -py /opt/src/job/aggregation_job.py --pyFiles /opt/src -d
+	docker compose exec jobmanager ./bin/flink run -py /opt/src/job/aggregation_ip_host.py --pyFiles /opt/src -d
 
 .PHONY: stop
 ## Stops all services in Docker compose
